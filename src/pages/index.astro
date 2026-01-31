@@ -1,0 +1,66 @@
+---
+import "../styles/global.css";
+import ChatWidget from "../components/ChatWidget.astro";
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Bezpieczna przestrzeń do rozmów o zdrowiu psychicznym i seksualnym. Anonimowy chatbot do porad seksuologiczno-psychologicznych."
+    />
+    <meta name="theme-color" content="#6366f1" />
+    <link rel="icon" type="image/svg+xml" href="/icons/icon-192.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.svg" />
+    <!-- Preconnect to Gemini API for faster LLM responses -->
+    <link rel="preconnect" href="https://generativelanguage.googleapis.com" />
+    <title>Terapeuta - Asystent Psycholog-Seksuolog</title>
+
+    <style>
+      /* Full-height layout */
+      html,
+      body {
+        height: 100%;
+      }
+
+      main {
+        min-height: 100%;
+        display: flex;
+      }
+
+      /* Chat section */
+      .chat-section {
+        background: var(--color-surface);
+        min-height: 100dvh;
+        padding: var(--space-3) var(--space-3)
+          calc(var(--space-3) + env(safe-area-inset-bottom));
+        display: flex;
+        flex: 1;
+      }
+
+      .chat-container {
+        width: min(960px, 100%);
+        margin: 0 auto;
+        display: flex;
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Skip link for keyboard accessibility -->
+    <a href="#main-content" class="skip-link">Przejdź do treści</a>
+
+    <main id="main-content">
+      <!-- Chat Section -->
+      <section class="chat-section section" id="chat">
+        <div class="chat-container">
+          <ChatWidget />
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
