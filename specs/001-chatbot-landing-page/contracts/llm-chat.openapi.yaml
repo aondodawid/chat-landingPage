@@ -1,0 +1,94 @@
+openapi: 3.0.3
+info:
+  title: LLM Chat Contract (Gemini Flash via LangChain)
+  version: 1.0.0
+  description: |
+    Kontrakt logiczny dla wywołania LLM z poziomu klienta. Implementacja
+    może mapować to wywołanie na Gemini Flash (np. gemini-3-flash).
+servers:
+  - url: https://generativelanguage.googleapis.com
+paths:
+  /v1beta/models/{model}:generateContent:
+    post:
+      summary: Generate chat completion
+      parameters:
+        - in: path
+          name: model
+          required: true
+          schema:
+            type: string
+          example: gemini-3-flash
+        - in: query
+          name: key
+          required: true
+          schema:
+            type: string
+          description: API key (client-side, from GEMINI_API_KEY)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                systemInstruction:
+                  type: object
+                  properties:
+                    parts:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                contents:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      role:
+                        type: string
+                        enum: [user, model]
+                      parts:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                generationConfig:
+                  type: object
+                  properties:
+                    temperature:
+                      type: number
+                    topP:
+                      type: number
+                    maxOutputTokens:
+                      type: integer
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  candidates:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        content:
+                          type: object
+                          properties:
+                            parts:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  text:
+                                    type: string
+        "401":
+          description: Invalid API key
+        "429":
+          description: Rate limited

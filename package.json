@@ -1,0 +1,26 @@
+{
+  "name": "terapeuta-app",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.17.1",
+    "@langchain/core": "^0.3.0",
+    "@langchain/google-genai": "^0.1.0",
+    "@huggingface/transformers": "^3.0.0",
+    "idb": "^8.0.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@vite-pwa/astro": "^1.2.0",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-pwa": "^0.21.0",
+    "workbox-window": "^7.0.0",
+    "@types/uuid": "^10.0.0"
+  }
+}
