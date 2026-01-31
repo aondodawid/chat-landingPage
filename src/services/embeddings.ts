@@ -12,6 +12,8 @@ import {
 // Configure Transformers.js for browser
 env.allowLocalModels = false;
 env.useBrowserCache = true;
+env.remoteHost = `${window.location.origin}/hf`;
+env.remotePath = "";
 
 const MODEL_ID = "onnx-community/embeddinggemma-300m-ONNX";
 const EMBEDDING_DIM = 768;

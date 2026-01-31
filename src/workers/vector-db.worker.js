@@ -11,6 +11,8 @@ env.allowLocalModels = false;
 env.useBrowserCache = true;
 env.backends.onnx.wasm.numThreads = 1;
 env.backends.onnx.wasm.proxy = false;
+env.remoteHost = `${self.location.origin}/hf`;
+env.remotePath = "";
 
 const MODEL_ID = "onnx-community/embeddinggemma-300m-ONNX";
 const EMBEDDING_DIM = 768;
